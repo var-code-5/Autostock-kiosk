@@ -5,6 +5,7 @@ import BookGrid from './BookGrid';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { LanguageContext, translations } from '../utils/translations';
+import SearchBar from './SearchBar';
 
 interface MainInterfaceProps {
   language: 'en' | 'hi' | 'te';
@@ -13,7 +14,7 @@ interface MainInterfaceProps {
 }
 
 const MainInterface: React.FC<MainInterfaceProps> = ({ language, textSize, onTextSizeChange }) => {
-  const t = translations[language];
+  const t = translations[language as 'en' | 'hi' | 'te'];
 
   const stats = [
     { value: "10,000+", label: t.books },
@@ -50,19 +51,9 @@ const MainInterface: React.FC<MainInterfaceProps> = ({ language, textSize, onTex
             <h1 className="text-4xl font-bold mb-4">{t.browse}</h1>
             <p className="text-gray-600 mb-8">{t.findBooks}</p>
             
-            <div className="relative mb-8">
-              <input
-                type="text"
-                placeholder={t.search}
-                className="w-full bg-gray-100 rounded-lg pl-10 pr-12 py-3 text-sm"
-              />
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-              <Mic className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-            </div>
+            <SearchBar t={translations[language]}/>
 
-            <button className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors">
-              {t.getStarted}
-            </button>
+            
           </div>
 
           <div className="w-96">
@@ -129,7 +120,7 @@ const MainInterface: React.FC<MainInterfaceProps> = ({ language, textSize, onTex
               {t.viewAll}
             </Link>
           </div>
-          <BookGrid language={language} />
+          <BookGrid language={language} type='new_arrivals'/>
         </div>
 
         {/* Top Sellers */}
@@ -140,7 +131,7 @@ const MainInterface: React.FC<MainInterfaceProps> = ({ language, textSize, onTex
               {t.viewAll}
             </Link>
           </div>
-          <BookGrid language={language} />
+          <BookGrid language={language} type='top_sellers'/>
         </div>
 
         {/* Browse by Categories */}

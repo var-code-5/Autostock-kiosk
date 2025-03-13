@@ -10,6 +10,7 @@ import OnSale from './components/OnSale';
 import NewArrivals from './components/NewArrivals';
 import Publishers from './components/Publishers';
 import { LanguageContext } from './utils/translations';
+import LoginPage from './components/LoginPage';
 
 function App() {
   const [selectedLanguage, setSelectedLanguage] = useState<'en' | 'hi' | 'te' | null>(null);
@@ -36,6 +37,7 @@ function App() {
                 />
               } 
             />
+            <Route path='/login' element={<LoginPage/>} />
             <Route path="/on-sale" element={<OnSale />} />
             <Route path="/new-arrivals" element={<NewArrivals />} />
             <Route path="/publishers" element={<Publishers />} />
