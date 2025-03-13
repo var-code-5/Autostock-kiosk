@@ -11,6 +11,7 @@ import NewArrivals from './components/NewArrivals';
 import Publishers from './components/Publishers';
 import { LanguageContext } from './utils/translations';
 import LoginPage from './components/LoginPage';
+import Browse from './components/Browse';
 
 function App() {
   const [selectedLanguage, setSelectedLanguage] = useState<'en' | 'hi' | 'te' | null>(null);
@@ -46,6 +47,7 @@ function App() {
               element={<BookDetails language={selectedLanguage} />} 
             />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/browse" element={<Browse/>} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/payment-confirmation" element={<PaymentConfirmation />} />
           </Routes>
